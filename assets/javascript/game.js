@@ -26,7 +26,7 @@ $("#wins").html(wins);
 $("#losses").html(losses);
 InitResetCrstals();
 
-//reset all variables once game is won/lost
+// reset all variables once game is won/lost
 var reset = function() {
     userTotal = 0;
     randomNum = 18 + Math.floor(Math.random() * 120);
@@ -39,13 +39,13 @@ var reset = function() {
     $("#losses").html(losses);
 }
 
-//alert win or loss
+// alert win or loss
 var gameAlertText;
 var gameAlert = function(){
     alert(gameAlertText);
 }
 
-//if else statement for winning or losing. 
+// if else statement for winning or losing. 
 var winCheck = function() {
     var audioElement = document.createElement("audio");  
     var soundClip;
@@ -57,17 +57,18 @@ var winCheck = function() {
         debugger;        
         audioElement.play(); 
         gameAlertText = "Hooray! You won!";
-        setTimeout(gameAlert, 1000);        
-        setTimeout(reset, 1000);    
+        setTimeout(gameAlert, 125);        
+        setTimeout(reset, 125);    
 
     } else if (userTotal > randomNum) {
         $("#losses").html(losses++);        
+        debugger;
         soundClip =  "assets/audio/sad_trombone.mp3";   
         audioElement.setAttribute("src", soundClip);
         audioElement.play();    
         gameAlertText =  "You did not win! Try Again!"          
-        setTimeout(gameAlert,1000);       
-        setTimeout(reset, 1000);  
+        setTimeout(gameAlert,125);       
+        setTimeout(reset, 125);  
     }
 };
 
