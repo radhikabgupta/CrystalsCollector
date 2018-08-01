@@ -20,3 +20,5 @@
 
 ### Crystals Collector! Link
 [Crystals Collector!](https://radhikabgupta.github.io/CrystalsCollector/)
+
+![Psychic-Game](https://raw.githubusercontent.com/radhikabgupta/Psychic-Game/master/assets/images/user_interface.jpg)
