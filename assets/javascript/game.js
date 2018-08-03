@@ -26,7 +26,7 @@ $("#wins").html(wins);
 $("#losses").html(losses);
 InitResetCrstals();
 
-// reset all variables once game is won/lost
+//reset all variables once game is won/lost
 var reset = function() {
     userTotal = 0;
     randomNum = 18 + Math.floor(Math.random() * 120);
@@ -39,13 +39,8 @@ var reset = function() {
     $("#losses").html(losses);
 }
 
-// alert win or loss
-var gameAlertText;
-var gameAlert = function(){
-    alert(gameAlertText);
-}
-
-// if else statement for winning or losing. 
+//alert win or loss
+//if else statement for winning or losing. 
 var winCheck = function() {
     var audioElement = document.createElement("audio");  
     var soundClip;
@@ -53,22 +48,22 @@ var winCheck = function() {
     if (userTotal == randomNum) {
         $("#wins").html(wins++);        
         soundClip =  "assets/audio/applause.mp3";
-        audioElement.setAttribute("src", soundClip);
-        debugger;        
+        audioElement.setAttribute("src", soundClip);  
         audioElement.play(); 
-        gameAlertText = "Hooray! You won!";
-        setTimeout(gameAlert, 125);        
-        setTimeout(reset, 125);    
+
+        $("#modalText").html("Hooray! You won!");
+        modal.style.display = "block";  
+        //reset();                    
 
     } else if (userTotal > randomNum) {
         $("#losses").html(losses++);        
-        debugger;
         soundClip =  "assets/audio/sad_trombone.mp3";   
         audioElement.setAttribute("src", soundClip);
         audioElement.play();    
-        gameAlertText =  "You did not win! Try Again!"          
-        setTimeout(gameAlert,125);       
-        setTimeout(reset, 125);  
+
+        $("#modalText").html("You did not win! Try Again!"); 
+        modal.style.display = "block"; 
+        //reset();               
     }
 };
 
@@ -96,6 +91,26 @@ $("#red").on("click", function() {
     $("#totalNum").html(userTotal);
     setTimeout(winCheck, 250);
 })
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+    reset();
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        reset();
+    }
+}
 
 
 
